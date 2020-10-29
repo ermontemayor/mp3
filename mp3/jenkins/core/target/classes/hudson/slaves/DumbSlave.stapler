@@ -1,0 +1,2 @@
+#Thu Oct 29 15:38:00 EDT 2020
+constructor=name,nodeDescription,remoteFS,numExecutors,mode,labelString,launcher,retentionStrategy,nodeProperties

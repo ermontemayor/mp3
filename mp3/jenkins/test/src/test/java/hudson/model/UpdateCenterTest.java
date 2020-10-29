@@ -44,7 +44,7 @@ import org.junit.Test;
 public class UpdateCenterTest {
     @Test public void data() throws Exception {
         try {
-           // doData("http://updates.jenkins-ci.org/update-center.json?version=build");
+           //doData("http://updates.jenkins-ci.org/update-center.json?version=build");
             //doData("http://updates.jenkins-ci.org/stable/update-center.json?version=build");
         } catch (Exception x) {
             if (Boolean.getBoolean("ignore.random.failures")) {
