@@ -177,7 +177,7 @@ public class Connection {
         return ka;
     }
 
-    private KeyPair generateKeyPairWithSpec(DHParameterSpec spec) throws NoSuchAlgorithmParameterException, InvalidAlgorithmParameterException {
+    private KeyPair generateKeyPairWithSpec(DHParameterSpec spec) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
         KeyPair keyPair;
         KeyPairGenerator dh = KeyPairGenerator.getInstance("DH");
         dh.initialize(spec);
