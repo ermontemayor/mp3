@@ -153,8 +153,9 @@ public class Connection {
             AlgorithmParameterGenerator paramGen = AlgorithmParameterGenerator.getInstance("DH");
             paramGen.init(keySize);
 
-            DHParameterSpec spec = paramGen.generateParameters().getParamterSpec(DHParameterSpec.class);
-            keyPair = generateKeyPairWithSpec(spec);
+            KeyPairGenerator dh = KeyPairGenerator.getInstance("DH");
+            dh.initialize(paramGen.generateParameters().getParameterSpec(DHParameterSpec.class));
+            keyPair = dh.generateKeyPair();
 
             // send a half and get a half
             writeKey(keyPair.getPublic());
@@ -162,8 +163,9 @@ public class Connection {
         } else {
             otherHalf = KeyFactory.getInstance("DH").generatePublic(readKey());
 
-            DHParameterSpec param = ((DHPublicKey) otherHalf).getParams();
-            keyPair = generateKeyPairWithSpec(param);
+            KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("DH");
+            keyPairGen.initialize(((DHPublicKey) otherHalf).getParams());
+            keyPair = keyPairGen.generateKeyPair();
 
             // send a half and get a half
             writeKey(keyPair.getPublic());
@@ -174,15 +176,6 @@ public class Connection {
         ka.doPhase(otherHalf, true);
 
         return ka;
-    }
-
-    private KeyPair generateKeyPairWithSpec(DHParameterSpec spec)
-        throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
-        KeyPair keyPair;
-        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("DH");
-        keyPairGen.initialize(spec);
-        keyPair = keyPairGen.generateKeyPair();
-        return keyPair;
     }
 
     /**
