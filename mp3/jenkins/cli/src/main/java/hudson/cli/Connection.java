@@ -25,7 +25,8 @@ package hudson.cli;
 
 import hudson.remoting.SocketChannelStream;
 import org.apache.commons.codec.binary.Base64;
-
+import java.security.NoSuchAlgorithmException;
+import java.security.InvalidAlgorithmParameterException;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
@@ -153,9 +154,8 @@ public class Connection {
             AlgorithmParameterGenerator paramGen = AlgorithmParameterGenerator.getInstance("DH");
             paramGen.init(keySize);
 
-            KeyPairGenerator dh = KeyPairGenerator.getInstance("DH");
-            dh.initialize(paramGen.generateParameters().getParameterSpec(DHParameterSpec.class));
-            keyPair = dh.generateKeyPair();
+            DHParameterSpec spec = paramGen.generateParameters().getParameterSpec(DHParameterSpec.class);
+            keyPair = generateKeyPairWithSpec(spec);
 
             // send a half and get a half
             writeKey(keyPair.getPublic());
@@ -163,9 +163,8 @@ public class Connection {
         } else {
             otherHalf = KeyFactory.getInstance("DH").generatePublic(readKey());
 
-            KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("DH");
-            keyPairGen.initialize(((DHPublicKey) otherHalf).getParams());
-            keyPair = keyPairGen.generateKeyPair();
+            DHParameterSpec params = ((DHPublicKey) otherHalf).getParams();
+            keyPair = generateKeyPairWithSpec(params);
 
             // send a half and get a half
             writeKey(keyPair.getPublic());
@@ -176,6 +175,14 @@ public class Connection {
         ka.doPhase(otherHalf, true);
 
         return ka;
+    }
+
+    private KeyPair generateKeyPairWithSpec(DHParamterSpec spec) throws NoSuchAlgorithmParameterException, InvalidAlgorithmParameterException {
+        KeyPair keyPair;
+        KeyPairGenerator dh = KeyPairGenerator.getInstance("DH");
+        dh.initialize(spec);
+        keyPair = dh.generateKeyPair();
+        return keyPair;
     }
 
     /**
