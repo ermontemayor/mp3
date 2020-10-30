@@ -1,0 +1,2 @@
+Question 1: This is a duplicated code smell, to refactor I extracted the code into a new function
+which removed the smell and I was able to still run all the tests.
