@@ -247,11 +247,12 @@ public abstract class IdStrategy extends AbstractDescribableImpl<IdStrategy> imp
                     } else if (c == '$') {
                         StringBuilder hex = new StringBuilder(4);
                         i++;
+                        outerloop:
                         for(int j = 0; j < 4; j++) {
                             if (i < chars.length)
                                 hex.append(chars[i]);
                             else
-                                break outer;
+                                break outerloop;
                         }
                         buf.append(Character.valueOf((char)Integer.parseInt(hex.toString(), 16)));
                     }
