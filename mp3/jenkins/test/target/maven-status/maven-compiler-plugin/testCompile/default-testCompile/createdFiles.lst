@@ -251,6 +251,7 @@ hudson/tasks/ArtifactArchiverTest$2.class
 hudson/ExtensionFinderTest$InjectingExtension.class
 hudson/slaves/NodeProvisionerTest$Latch$1.class
 hudson/model/ViewPropertyTest$ViewPropertyImpl.class
+jenkins/model/Testq4.class
 hudson/model/ItemGroupMixInTest.class
 hudson/util/RobustReflectionConverterTest.class
 hudson/model/QueueTest$TestFlyweightTask.class

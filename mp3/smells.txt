@@ -1,0 +1,10 @@
+Question 1: This is a duplicated code smell, to refactor I extracted the code into a new function
+which removed the smell and I was able to still run all the tests.
+
+Question 2: No written answer, commited and pushed q2
+
+Question 3: This is a feature envy code smell where the code wishes it were in another class.
+To remove the code smell I just moved it to the appropriate class.
+
+Question 4: To eliminate the repeated code I put a for loop to loop four times and execute the 
+same thing.

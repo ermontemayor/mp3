@@ -63,8 +63,8 @@
   <testcase name="findTokensOnSubText" classname="hudson.MarkupTextTest" time="0"/>
   <testcase name="escape" classname="hudson.MarkupTextTest" time="0"/>
   <testcase name="adjacent" classname="hudson.MarkupTextTest" time="0"/>
-  <testcase name="literalTextSurround" classname="hudson.MarkupTextTest" time="0"/>
-  <testcase name="test1" classname="hudson.MarkupTextTest" time="0.001"/>
+  <testcase name="literalTextSurround" classname="hudson.MarkupTextTest" time="0.001"/>
+  <testcase name="test1" classname="hudson.MarkupTextTest" time="0"/>
   <testcase name="subTextSubText" classname="hudson.MarkupTextTest" time="0"/>
   <testcase name="preEscape" classname="hudson.MarkupTextTest" time="0"/>
 </testsuite>

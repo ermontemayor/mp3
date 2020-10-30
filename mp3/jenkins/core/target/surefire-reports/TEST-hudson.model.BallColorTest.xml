@@ -59,6 +59,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="htmlColor" classname="hudson.model.BallColorTest" time="0.001"/>
-  <testcase name="iconClassName" classname="hudson.model.BallColorTest" time="0"/>
+  <testcase name="htmlColor" classname="hudson.model.BallColorTest" time="0"/>
+  <testcase name="iconClassName" classname="hudson.model.BallColorTest" time="0.001"/>
 </testsuite>
